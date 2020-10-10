@@ -13,8 +13,8 @@ type TLE struct {
 	InternationalDesignator string
 	EpochYear               uint64
 	EpochDay                float64
-	FirstTimeDerivative     float64
-	SecondTimeDerivative    float64
+	FirstTimeDerivative     string
+	SecondTimeDerivative    string
 	BSTAR                   float64
 	EphemerisType           uint64
 	ElementNumber           uint64
@@ -47,8 +47,8 @@ func (tle *TLE) parseLine1(line1 string) (*TLE, error) {
 	internationalDesignatorPiece        := line1[14:17]
 	epochYear, _                        := strconv.ParseUint(line1[18:20], 10, 64)
 	epocheDay, _                        := strconv.ParseFloat(line1[20:32], 64)
-	firstTimeDerivative, _              := strconv.ParseFloat(line1[33:43], 64)
-	secondTimeDerivative, _             := strconv.ParseFloat(line1[44:52], 64)
+	firstTimeDerivative                 := line1[33:43]
+	secondTimeDerivative                := line1[44:52]
 	bstar, _                            := strconv.ParseFloat(line1[53:61], 64)
 	ephemerisType, _                    := strconv.ParseUint(line1[62:63], 10, 64)
 	elementNumber, _                    := strconv.ParseUint(line1[64:68], 10, 64)
