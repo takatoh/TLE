@@ -2,7 +2,6 @@ package tle
 
 import (
 	"errors"
-//	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -52,13 +51,8 @@ func (tle *TLE) parseLine1(line1 string) (*TLE, error) {
 	firstTimeDerivative                 := line1[33:43]
 	secondTimeDerivative                := line1[44:52]
 	bstarBuf                            := line1[53:61]
-//	fmt.Println(bstarBuf)
-//	fmt.Println(strings.Trim(bstarBuf[0:6], " "))
-//	fmt.Println(bstarBuf[6:8])
 	bstarBase, _                        := strconv.ParseFloat("0." + strings.Trim(bstarBuf[0:6], " "), 64)
 	bstarExp, _                         := strconv.ParseFloat(bstarBuf[6:8], 64)
-//	fmt.Printf("%f\n", bstarBase)
-//	fmt.Printf("%f\n", bstarExp)
 	bstar                               := bstarBase * math.Pow(10.0, bstarExp)
 	ephemerisType, _                    := strconv.ParseUint(line1[62:63], 10, 64)
 	elementNumber, _                    := strconv.ParseUint(strings.Trim(line1[64:68], " "), 10, 64)
