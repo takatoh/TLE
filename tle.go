@@ -29,7 +29,7 @@ type TLE struct {
 }
 
 
-func NewTLE() *TLE {
+func New() *TLE {
 	p := new(TLE)
 	return p
 }

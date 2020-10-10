@@ -12,7 +12,7 @@ const (
 
 
 func TestParseLine1Success(t *testing.T) {
-	tle := NewTLE()
+	tle := New()
 	result, err := tle.parseLine1(line1)
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
@@ -32,7 +32,7 @@ func TestParseLine1Success(t *testing.T) {
 
 
 func TestParseLine2Success(t *testing.T) {
-	tle := NewTLE()
+	tle := New()
 	result, err := tle.parseLine2(line2)
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
