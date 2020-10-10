@@ -18,18 +18,16 @@ func TestParseLine1Success(t *testing.T) {
 		t.Fatalf("failed test %#v", err)
 	}
 
-	if result.SatelliteNumber          != 25544 ||
-		result.Classification          != "U" ||
-		result.InternationalDesignator != "98067A" ||
-		result.EpochYear               != 20 ||
-		result.EpochDay                != 284.12598781 ||
-		result.FirstTimeDerivative     != ".00000554" ||
-		result.SecondTimeDerivative    != "00000-0" ||
-		result.BSTAR                   != 0.18038 * math.Pow(10.0, -4.0) ||
-		result.EphemerisType           != 0 ||
-		result.ElementNumber           != 999 {
-			t.Fatal("failed test")
-	}
+	if result.SatelliteNumber != 25544 { t.Fatal("failed test: SatelliteNumber") }
+	if result.Classification != "U" { t.Fatal("failed test: Classification") }
+	if result.InternationalDesignator != "98067A" { t.Fatal("failed test: InternationalDesignator") }
+	if result.EpochYear != 20 { t.Fatal("failed test: EpochYear") }
+	if result.EpochDay != 284.12598781 { t.Fatal("failed test: EpochDay") }
+	if result.FirstTimeDerivative != " .00000554" { t.Fatal("failed test: FirstTimeDerivative") }
+	if result.SecondTimeDerivative != " 00000-0" { t.Fatal("failed test: SecondTimeDerivative") }
+	if result.BSTAR != 0.18038 * math.Pow(10.0, -4.0) { t.Fatal("failed test: BSTAR") }
+	if result.EphemerisType != 0 { t.Fatal("failed test: EphemerisType") }
+	if result.ElementNumber != 999 { t.Fatal("failed test: ElementNumber") }
 }
 
 
@@ -40,14 +38,11 @@ func TestParseLine2Success(t *testing.T) {
 		t.Fatalf("failed test %#v", err)
 	}
 
-	if result.Inclination        != 51.6443 ||
-		result.RightAscension    != 139.7571 ||
-		result.Eccentricity      != 0001313 ||
-		result.ArgumentOfPerigee != 18.8517 ||
-		result.MeanAnomaly       != 125.1639 ||
-		result.MeanMotion        != 15.49294162 ||
-		result.RevolutionNumber  != 24983 {
-			t.Fatal("failed test")
-	}
-
+	if result.Inclination != 51.6443 { t.Fatal("failed test: Inclination") }
+	if result.RightAscension != 139.7571 { t.Fatal("failed test: RightAscension") }
+	if result.Eccentricity != 0001313 { t.Fatal("failed test: Eccentricity") }
+	if result.ArgumentOfPerigee != 18.8517 { t.Fatal("failed test: ArgumentOfPerigee") }
+	if result.MeanAnomaly != 125.1639 { t.Fatal("failed test: MeanAnomaly") }
+	if result.MeanMotion != 15.49294162 { t.Fatal("failed test: MeanMotion") }
+	if result.RevolutionNumber != 24983 { t.Fatal("failed test: RevolutionNumber") }
 }
