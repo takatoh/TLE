@@ -1,6 +1,7 @@
 package tle
 
 import (
+	"math"
 	"testing"
 )
 
@@ -24,7 +25,7 @@ func TestParseLine1Success(t *testing.T) {
 		tle.EpochDay                != 284.12598781 ||
 		tle.FirstTimeDerivative     != ".00000554" ||
 		tle.SecondTimeDerivative    != "00000-0" ||
-		tle.BSTAR                   != 0.18038 * 10 ** -4 ||
+		tle.BSTAR                   != 0.18038 * math.Pow(10.0, -4.0) ||
 		tle.EphemerisType           != 0 ||
 		tle.ElementNumber           != 999 {
 			t.Fatal("failed test")
@@ -36,16 +37,16 @@ func TestParseLine2Success(t *testing.T) {
 	tle := NewTLE()
 	reuslt, err := tle.parseLine2(line2)
 	if err != nil {
-		f.Fatalf("failed test %#v", err)
+		t.Fatalf("failed test %#v", err)
 	}
 
-	if Inclination        != 51.6443 ||
-		RightAscension    != 139.7571 ||
-		Eccentricity      != 0001313 ||
-		ArgumentOfPerigee != 18.8517 ||
-		MeanAnomaly       != 125.1639 ||
-		MeanMotion        != 15.49294162 ||
-		RevolutionNumber  != 24983 {
+	if tle.Inclination        != 51.6443 ||
+		tle.RightAscension    != 139.7571 ||
+		tle.Eccentricity      != 0001313 ||
+		tle.ArgumentOfPerigee != 18.8517 ||
+		tle.MeanAnomaly       != 125.1639 ||
+		tle.MeanMotion        != 15.49294162 ||
+		tle.RevolutionNumber  != 24983 {
 			t.Fatal("failed test")
 	}
 
