@@ -87,10 +87,10 @@ func (tle *TLE) parseLine2(line2 string) (*TLE, error) {
 		return tle, errors.New("Invalid line-2 for TLE.")
 	}
 
-	inclination, _       := strconv.ParseFloat(line2[8:16], 64)
+	inclination, _       := strconv.ParseFloat(strings.Trim(line2[8:16], " "), 64)
 	rightAscension, _    := strconv.ParseFloat(line2[17:25], 64)
-	eccentricity, _      := strconv.ParseFloat(line2[26:33], 64)
-	argumentOfPerigee, _ := strconv.ParseFloat(line2[34:42], 64)
+	eccentricity, _      := strconv.ParseFloat("0." + line2[26:33], 64)
+	argumentOfPerigee, _ := strconv.ParseFloat(strings.Trim(line2[34:42], " "), 64)
 	meanAnomaly, _       := strconv.ParseFloat(line2[43:51], 64)
 	meanMotion, _        := strconv.ParseFloat(line2[52:63], 64)
 	revolutionNumber, _  := strconv.ParseUint(line2[63:68], 10, 64)
