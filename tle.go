@@ -75,7 +75,11 @@ func (tle *TLE) parseLine1(line1 string) (*TLE, error) {
 	tle.InternationalDesignator = strings.Trim(internationalDesignatorYear +
 		internationalDesignatorLaunchNumber +
 		internationalDesignatorPiece, " ")
-	tle.EpochYear               = epochYear
+	if 57 <= epochYear {
+		tle.EpochYear           = 1900 + epochYear
+	} else {
+		tle.EpochYear           = 2000 + epochYear
+	}
 	tle.EpochDay                = epocheDay
 	tle.FirstTimeDerivative     = firstTimeDerivative
 	tle.SecondTimeDerivative    = secondTimeDerivative
