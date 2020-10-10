@@ -36,7 +36,7 @@ func New() *TLE {
 
 
 func Parse(record string) (*TLE, error) {
-	a := strings.Split(strings.TrimRight(strings.Replace(record, "\r\n", "\n", -1), "\n"), "\n")
+	a := lines(record)
 	p := New()
 	var e error
 	p, e = p.parseLine1(a[0])
@@ -115,4 +115,9 @@ func (tle *TLE) parseLine2(line2 string) (*TLE, error) {
 	tle.RevolutionNumber  = revolutionNumber
 
 	return tle, nil
+}
+
+
+func lines(s string) []string {
+	return strings.Split(strings.TrimRight(strings.Replace(s, "\r\n", "\n", -1), "\n"), "\n")
 }
