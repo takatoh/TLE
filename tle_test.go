@@ -2,6 +2,7 @@ package tle
 
 import (
 	"math"
+	"reflect"
 	"testing"
 )
 
@@ -45,4 +46,37 @@ func TestParseLine2Success(t *testing.T) {
 	if result.MeanAnomaly != 125.1639 { t.Fatal("failed test: MeanAnomaly") }
 	if result.MeanMotion != 15.49294162 { t.Fatal("failed test: MeanMotion") }
 	if result.RevolutionNumber != 24983 { t.Fatal("failed test: RevolutionNumber") }
+}
+
+
+func TestParseSuccess(t *testing.T) {
+	twoLineElement := line1 + line2
+
+	expect := New()
+	expect.SatelliteNumber         = 25544
+	expect.Classification          = "U"
+	expect.InternationalDesignator = "98067A"
+	expect.EpochYear               = 20
+	expect.EpochDay                = 284.12598781
+	expect.FirstTimeDerivative     = " .00000554"
+	expect.SecondTimeDerivative    = " 00000-0"
+	expect.BSTAR                   = 0.18038 * math.Pow(10.0, -4.0)
+	expect.EphemerisType           = 0
+	expect.ElementNumber           = 999
+	expect.Inclination             = 51.6443
+	expect.RightAscension          = 139.7571
+	expect.Eccentricity            = 0.0001313
+	expect.ArgumentOfPerigee       = 18.8517
+	expect.MeanAnomaly             = 125.1639
+	expect.MeanMotion              = 15.49294162
+	expect.RevolutionNumber        = 24983
+
+	result, err := Parse(twoLineElement)
+	if err != nil {
+		t.Fatalf("failed test %#v", err)
+	}
+
+	if !reflect.DeepEqual(result, expect) {
+		t.Fatalf("failed test %#v", result)
+	}
 }
