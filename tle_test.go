@@ -22,7 +22,7 @@ func TestParseLine1Success(t *testing.T) {
 	if result.SatelliteNumber != 25544 { t.Fatal("failed test: SatelliteNumber") }
 	if result.Classification != "U" { t.Fatal("failed test: Classification") }
 	if result.InternationalDesignator != "98067A" { t.Fatal("failed test: InternationalDesignator") }
-	if result.EpochYear != 20 { t.Fatal("failed test: EpochYear") }
+	if result.EpochYear != 2020 { t.Fatal("failed test: EpochYear") }
 	if result.EpochDay != 284.12598781 { t.Fatal("failed test: EpochDay") }
 	if result.FirstTimeDerivative != " .00000554" { t.Fatal("failed test: FirstTimeDerivative") }
 	if result.SecondTimeDerivative != " 00000-0" { t.Fatal("failed test: SecondTimeDerivative") }
@@ -56,7 +56,7 @@ func TestParseSuccess(t *testing.T) {
 	expect.SatelliteNumber         = 25544
 	expect.Classification          = "U"
 	expect.InternationalDesignator = "98067A"
-	expect.EpochYear               = 20
+	expect.EpochYear               = 2020
 	expect.EpochDay                = 284.12598781
 	expect.FirstTimeDerivative     = " .00000554"
 	expect.SecondTimeDerivative    = " 00000-0"
