@@ -35,6 +35,18 @@ func New() *TLE {
 }
 
 
+func Parse(record string) (*TLE, error) {
+	a := strings.Split(strings.TrimRight(strings.Replace(record, "\r\n", "\n", -1), "\n"), "\n")
+	p := New()
+	var e error
+	p, e = p.parseLine1(a[0])
+	if e != nil { return p, e }
+	p, e = p.parseLine2(a[1])
+	if e != nil { return p, e }
+	return p, nil
+}
+
+
 func (tle *TLE) parseLine1(line1 string) (*TLE, error) {
 	line1 = strings.TrimRight(line1, "\r\n")
 	if len(line1) != 69 && line1[0:1] != "1" {
