@@ -40,7 +40,7 @@ func TestParseLine2Success(t *testing.T) {
 
 	if result.Inclination != 51.6443 { t.Fatal("failed test: Inclination") }
 	if result.RightAscension != 139.7571 { t.Fatal("failed test: RightAscension") }
-	if result.Eccentricity != 0001313 { t.Fatal("failed test: Eccentricity") }
+	if result.Eccentricity != 0.0001313 { t.Fatal("failed test: Eccentricity") }
 	if result.ArgumentOfPerigee != 18.8517 { t.Fatal("failed test: ArgumentOfPerigee") }
 	if result.MeanAnomaly != 125.1639 { t.Fatal("failed test: MeanAnomaly") }
 	if result.MeanMotion != 15.49294162 { t.Fatal("failed test: MeanMotion") }
