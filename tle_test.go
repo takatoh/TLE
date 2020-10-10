@@ -18,16 +18,16 @@ func TestParseLine1Success(t *testing.T) {
 		t.Fatalf("failed test %#v", err)
 	}
 
-	if tle.SatelliteNumber          != 25544 ||
-		tle.Classification          != "U" ||
-		tle.InternationalDesignator != "98067A" ||
-		tle.EpochYear               != 20 ||
-		tle.EpochDay                != 284.12598781 ||
-		tle.FirstTimeDerivative     != ".00000554" ||
-		tle.SecondTimeDerivative    != "00000-0" ||
-		tle.BSTAR                   != 0.18038 * math.Pow(10.0, -4.0) ||
-		tle.EphemerisType           != 0 ||
-		tle.ElementNumber           != 999 {
+	if result.SatelliteNumber          != 25544 ||
+		result.Classification          != "U" ||
+		result.InternationalDesignator != "98067A" ||
+		result.EpochYear               != 20 ||
+		result.EpochDay                != 284.12598781 ||
+		result.FirstTimeDerivative     != ".00000554" ||
+		result.SecondTimeDerivative    != "00000-0" ||
+		result.BSTAR                   != 0.18038 * math.Pow(10.0, -4.0) ||
+		result.EphemerisType           != 0 ||
+		result.ElementNumber           != 999 {
 			t.Fatal("failed test")
 	}
 }
@@ -35,18 +35,18 @@ func TestParseLine1Success(t *testing.T) {
 
 func TestParseLine2Success(t *testing.T) {
 	tle := NewTLE()
-	reuslt, err := tle.parseLine2(line2)
+	result, err := tle.parseLine2(line2)
 	if err != nil {
 		t.Fatalf("failed test %#v", err)
 	}
 
-	if tle.Inclination        != 51.6443 ||
-		tle.RightAscension    != 139.7571 ||
-		tle.Eccentricity      != 0001313 ||
-		tle.ArgumentOfPerigee != 18.8517 ||
-		tle.MeanAnomaly       != 125.1639 ||
-		tle.MeanMotion        != 15.49294162 ||
-		tle.RevolutionNumber  != 24983 {
+	if result.Inclination        != 51.6443 ||
+		result.RightAscension    != 139.7571 ||
+		result.Eccentricity      != 0001313 ||
+		result.ArgumentOfPerigee != 18.8517 ||
+		result.MeanAnomaly       != 125.1639 ||
+		result.MeanMotion        != 15.49294162 ||
+		result.RevolutionNumber  != 24983 {
 			t.Fatal("failed test")
 	}
 
