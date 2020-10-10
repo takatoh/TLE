@@ -52,24 +52,7 @@ func TestParseLine2Success(t *testing.T) {
 func TestParseSuccess(t *testing.T) {
 	twoLineElement := line1 + line2
 
-	expect := New()
-	expect.SatelliteNumber         = 25544
-	expect.Classification          = "U"
-	expect.InternationalDesignator = "98067A"
-	expect.EpochYear               = 2020
-	expect.EpochDay                = 284.12598781
-	expect.FirstTimeDerivative     = " .00000554"
-	expect.SecondTimeDerivative    = " 00000-0"
-	expect.BSTAR                   = 0.18038 * math.Pow(10.0, -4.0)
-	expect.EphemerisType           = 0
-	expect.ElementNumber           = 999
-	expect.Inclination             = 51.6443
-	expect.RightAscension          = 139.7571
-	expect.Eccentricity            = 0.0001313
-	expect.ArgumentOfPerigee       = 18.8517
-	expect.MeanAnomaly             = 125.1639
-	expect.MeanMotion              = 15.49294162
-	expect.RevolutionNumber        = 24983
+	expect := expectedElements()
 
 	result, err := Parse(twoLineElement)
 	if err != nil {
@@ -79,4 +62,27 @@ func TestParseSuccess(t *testing.T) {
 	if !reflect.DeepEqual(result, expect) {
 		t.Fatalf("failed test %#v", result)
 	}
+}
+
+
+func expectedElements() *TLE {
+	p := New()
+	p.SatelliteNumber         = 25544
+	p.Classification          = "U"
+	p.InternationalDesignator = "98067A"
+	p.EpochYear               = 2020
+	p.EpochDay                = 284.12598781
+	p.FirstTimeDerivative     = " .00000554"
+	p.SecondTimeDerivative    = " 00000-0"
+	p.BSTAR                   = 0.18038 * math.Pow(10.0, -4.0)
+	p.EphemerisType           = 0
+	p.ElementNumber           = 999
+	p.Inclination             = 51.6443
+	p.RightAscension          = 139.7571
+	p.Eccentricity            = 0.0001313
+	p.ArgumentOfPerigee       = 18.8517
+	p.MeanAnomaly             = 125.1639
+	p.MeanMotion              = 15.49294162
+	p.RevolutionNumber        = 24983
+	return p
 }
