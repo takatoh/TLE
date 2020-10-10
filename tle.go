@@ -19,3 +19,9 @@ type TLE struct {
 	MeanMotion              float64
 	RevolutionNumber        uint64
 }
+
+
+func NewTLE() *TLE {
+	p := new(TLE)
+	return p
+}
